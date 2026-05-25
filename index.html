@@ -20,9 +20,40 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:#FFFDF8;color:#2C1A00
 
 /* ─── CUSTOM CURSOR ──────────────────────────────────────────────────────── */
 body{
-  cursor:none;
+  cursor:auto;
 }
 
+.cursor{
+  position:fixed;
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:#1D9E75;
+  opacity:.7;
+  pointer-events:none;
+  z-index:9999;
+  transition:transform .15s,opacity .15s;
+  mix-blend-mode:multiply;
+}
+
+.cursor-ring{
+  position:fixed;
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  border:1.5px solid rgba(29,158,117,.35);
+  pointer-events:none;
+  z-index:9998;
+  transition:transform .08s,opacity .2s;
+}
+
+body:hover .cursor{
+  opacity:.7;
+}
+
+body:not(:hover) .cursor{
+  opacity:0;
+}
 /* ─── VARIABLES ─────────────────────────────────────────────────────────── */
 :root{
   --green:#1D9E75; --green-dk:#085041; --green-lt:#E1F5EE; --green-md:#5DCAA5;
