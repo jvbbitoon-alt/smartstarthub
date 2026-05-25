@@ -1,0 +1,1333 @@
+bash
+
+cat > /mnt/user-data/outputs/SmartStartHub_Website.html << 'HTMLEOF'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="SmartStartHub — Beautiful faith-based printables for homeschool families, Sunday school teachers & Christian parents. Instant download PDFs. Scripture flashcards, prayer journals, unit studies & more.">
+<meta name="keywords" content="faith printables, homeschool printables, bible study journal, kids prayer journal, fruit of the spirit, scripture flashcards, christian kids, sunday school">
+<meta property="og:title" content="SmartStartHub — Faith Printables for Families">
+<meta property="og:description" content="Beautiful, done-for-you printable resources. Print today, use tomorrow. Instant download PDFs for Christian families.">
+<meta property="og:type" content="website">
+<title>SmartStartHub — Faith Printables for Families</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ─── RESET ──────────────────────────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:#FFFDF8;color:#2C1A00;overflow-x:hidden;cursor:none}
+
+/* ─── CUSTOM CURSOR ──────────────────────────────────────────────────────── */
+.cursor{position:fixed;width:10px;height:10px;border-radius:50%;background:#1D9E75;pointer-events:none;z-index:9999;transition:transform .15s,opacity .15s;mix-blend-mode:multiply}
+.cursor-ring{position:fixed;width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(29,158,117,.35);pointer-events:none;z-index:9998;transition:transform .08s,opacity .2s}
+body:hover .cursor{opacity:1} body:not(:hover) .cursor{opacity:0}
+
+/* ─── VARIABLES ─────────────────────────────────────────────────────────── */
+:root{
+  --green:#1D9E75; --green-dk:#085041; --green-lt:#E1F5EE; --green-md:#5DCAA5;
+  --gold:#C9A96E;  --gold-dk:#8B6914;  --gold-lt:#F5ECD7;
+  --cream:#FFFDF8; --warm:#F5EDE0;
+  --brown:#2C1A00; --taupe:#7A6040; --muted:#B89A7A;
+  --purple:#7F77DD; --purple-lt:#EEEDFE;
+  --coral:#D85A30; --coral-lt:#FAECE7;
+  --amber:#BA7517; --amber-lt:#FAEEDA;
+  --sans:'Plus Jakarta Sans',sans-serif;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --shadow-sm:0 2px 12px rgba(44,26,0,.07);
+  --shadow-md:0 8px 32px rgba(44,26,0,.10);
+  --shadow-lg:0 20px 60px rgba(44,26,0,.13);
+  --radius:16px; --radius-lg:24px; --radius-xl:32px;
+}
+
+/* ─── UTILITY ────────────────────────────────────────────────────────────── */
+.container{max-width:1160px;margin:0 auto;padding:0 28px}
+a{text-decoration:none;color:inherit}
+.serif{font-family:var(--serif)}
+
+/* ─── SCROLL ANIMATIONS ──────────────────────────────────────────────────── */
+[data-reveal]{opacity:0;transform:translateY(32px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+[data-reveal].revealed{opacity:1;transform:none}
+[data-reveal][data-delay="1"]{transition-delay:.1s}
+[data-reveal][data-delay="2"]{transition-delay:.2s}
+[data-reveal][data-delay="3"]{transition-delay:.3s}
+[data-reveal][data-delay="4"]{transition-delay:.4s}
+
+/* ─── NAV ────────────────────────────────────────────────────────────────── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  padding:0 28px;height:68px;
+  display:flex;align-items:center;justify-content:space-between;
+  transition:background .4s,box-shadow .4s,backdrop-filter .4s;
+}
+nav.solid{background:rgba(255,253,248,.94);backdrop-filter:blur(16px);box-shadow:0 1px 0 rgba(44,26,0,.07)}
+.nav-brand{display:flex;align-items:center;gap:11px}
+.nav-orb{
+  width:38px;height:38px;border-radius:12px;
+  background:linear-gradient(135deg,var(--green),var(--green-dk));
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);font-weight:700;font-size:20px;color:#fff;
+  box-shadow:0 3px 14px rgba(29,158,117,.35);
+}
+.nav-name{font-family:var(--serif);font-size:19px;font-weight:700;letter-spacing:-.3px;color:var(--brown)}
+.nav-name small{display:block;font-family:var(--sans);font-size:9.5px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);line-height:1}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links a{font-size:14px;font-weight:500;color:var(--taupe);transition:color .2s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1.5px;background:var(--green);transition:width .25s}
+.nav-links a:hover{color:var(--green)}
+.nav-links a:hover::after{width:100%}
+.nav-etsy{
+  background:var(--green);color:#fff;padding:9px 22px;border-radius:100px;
+  font-size:13px;font-weight:700;letter-spacing:.01em;
+  transition:all .2s;box-shadow:0 3px 16px rgba(29,158,117,.3);
+  display:flex;align-items:center;gap:6px;
+}
+.nav-etsy:hover{background:var(--green-dk);transform:translateY(-2px);box-shadow:0 6px 24px rgba(29,158,117,.4);color:#fff}
+.burger{display:none;width:28px;height:20px;flex-direction:column;justify-content:space-between;cursor:none;padding:2px 0}
+.burger span{display:block;height:2px;border-radius:2px;background:var(--brown);transition:.3s}
+.drawer{
+  display:none;position:fixed;top:68px;left:0;right:0;
+  background:var(--cream);border-bottom:1px solid var(--green-lt);
+  padding:20px 28px 28px;z-index:499;flex-direction:column;gap:0;
+}
+.drawer.open{display:flex}
+.drawer a{
+  padding:14px 0;font-size:16px;font-weight:500;color:var(--brown);
+  border-bottom:1px solid rgba(44,26,0,.06);
+  transition:color .2s;
+}
+.drawer a:last-child{border:none;padding-top:20px}
+.drawer a:hover{color:var(--green)}
+
+/* ─── HERO ───────────────────────────────────────────────────────────────── */
+.hero{
+  min-height:100vh;padding-top:68px;
+  display:grid;place-items:center;
+  position:relative;overflow:hidden;
+}
+.hero-mesh{
+  position:absolute;inset:0;z-index:0;
+  background:
+    radial-gradient(ellipse 75% 55% at 85% 35%,rgba(29,158,117,.09) 0%,transparent 65%),
+    radial-gradient(ellipse 55% 65% at 15% 75%,rgba(201,169,110,.11) 0%,transparent 60%),
+    radial-gradient(ellipse 40% 40% at 50% 50%,rgba(255,253,248,1) 0%,transparent 70%);
+}
+.hero-dots{
+  position:absolute;inset:0;z-index:0;
+  background-image:radial-gradient(rgba(29,158,117,.08) 1px,transparent 1px);
+  background-size:30px 30px;
+}
+.hero-inner{
+  position:relative;z-index:2;
+  display:grid;grid-template-columns:1.05fr 1fr;gap:64px;align-items:center;
+  padding:80px 0 100px;
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--green-lt);color:var(--green-dk);
+  padding:7px 16px;border-radius:100px;
+  font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  border:1px solid rgba(29,158,117,.18);margin-bottom:22px;
+}
+.hero-tag::before{content:'✦';font-size:9px;opacity:.6}
+h1{
+  font-family:var(--serif);font-size:clamp(42px,5.5vw,68px);
+  font-weight:700;line-height:1.08;letter-spacing:-.5px;
+  color:var(--brown);margin-bottom:22px;
+}
+h1 em{font-style:italic;color:var(--green)}
+.hero-sub{
+  font-size:17px;line-height:1.8;color:var(--taupe);
+  margin-bottom:36px;max-width:480px;font-weight:400;
+}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:44px}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:14px 28px;border-radius:100px;
+  font-size:15px;font-weight:700;font-family:var(--sans);
+  transition:all .22s;cursor:none;
+}
+.btn-green{
+  background:var(--green);color:#fff;
+  box-shadow:0 4px 24px rgba(29,158,117,.32);
+}
+.btn-green:hover{background:var(--green-dk);transform:translateY(-3px);box-shadow:0 10px 32px rgba(29,158,117,.38);color:#fff}
+.btn-outline{
+  background:#fff;color:var(--brown);
+  border:1.5px solid rgba(44,26,0,.13);
+  box-shadow:var(--shadow-sm);
+}
+.btn-outline:hover{border-color:var(--green);color:var(--green);transform:translateY(-3px)}
+.hero-social{display:flex;align-items:center;gap:16px}
+.hero-faces{display:flex}
+.hero-faces span{
+  width:34px;height:34px;border-radius:50%;
+  border:2.5px solid #fff;background:var(--green-lt);
+  display:flex;align-items:center;justify-content:center;font-size:16px;
+  margin-left:-10px;
+}
+.hero-faces span:first-child{margin-left:0}
+.hero-social-text{font-size:13px;color:var(--taupe);line-height:1.5}
+.hero-social-text strong{color:var(--brown);display:block}
+
+/* Hero card */
+.hero-right{position:relative}
+.hero-card-wrap{position:relative;max-width:420px;margin:0 auto}
+.hc-shadow{
+  position:absolute;top:-18px;right:-18px;
+  width:100%;height:100%;border-radius:var(--radius-xl);
+  background:var(--gold-lt);border:1px solid rgba(201,169,110,.25);z-index:0
+}
+.hc-shadow2{
+  position:absolute;top:-34px;right:-34px;
+  width:100%;height:100%;border-radius:var(--radius-xl);
+  background:var(--green-lt);border:1px solid rgba(29,158,117,.2);z-index:-1
+}
+.hero-card{
+  position:relative;z-index:1;
+  background:#fff;border-radius:var(--radius-xl);padding:26px;
+  box-shadow:var(--shadow-lg);border:1px solid rgba(44,26,0,.06);
+}
+.hc-head{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.hc-icon{
+  width:52px;height:52px;border-radius:14px;
+  background:var(--green-lt);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0
+}
+.hc-meta p:first-child{font-weight:700;font-size:14px;color:var(--brown);margin-bottom:2px}
+.hc-meta p:last-child{font-size:12px;color:var(--muted)}
+.hc-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px}
+.chip{font-size:11px;font-weight:600;padding:5px 11px;border-radius:100px}
+.chip-g{background:var(--green-lt);color:var(--green-dk)}
+.chip-au{background:var(--gold-lt);color:var(--gold-dk)}
+.chip-p{background:var(--purple-lt);color:#3C3489}
+.chip-c{background:var(--coral-lt);color:#712B13}
+.chip-a{background:var(--amber-lt);color:#633806}
+.hc-foot{display:flex;align-items:center;justify-content:space-between;padding-top:16px;border-top:1px solid rgba(44,26,0,.06)}
+.hc-price{font-family:var(--serif);font-size:26px;font-weight:700;color:var(--green)}
+.hc-price sub{font-size:12px;font-family:var(--sans);color:var(--muted);font-weight:400;margin-left:3px}
+.hc-cta{background:var(--green);color:#fff;padding:9px 20px;border-radius:100px;font-size:12px;font-weight:700;transition:.2s}
+.hc-cta:hover{background:var(--green-dk)}
+
+/* Floats */
+.hc-float{
+  position:absolute;background:#fff;border-radius:14px;padding:13px 17px;
+  box-shadow:0 10px 36px rgba(44,26,0,.13);display:flex;align-items:center;gap:12px;
+  border:1px solid rgba(44,26,0,.05);z-index:10;
+}
+.hf-left{bottom:-22px;left:-28px}
+.hf-right{top:-18px;right:-10px}
+.hc-float-icon{font-size:26px;flex-shrink:0}
+.hc-float-text p:first-child{font-weight:700;font-size:13px;color:var(--brown)}
+.hc-float-text p:last-child{font-size:11px;color:var(--muted)}
+
+/* ─── TICKER ─────────────────────────────────────────────────────────────── */
+.ticker{background:var(--green);padding:13px 0;overflow:hidden}
+.ticker-track{
+  display:flex;gap:48px;white-space:nowrap;
+  animation:ticker 28s linear infinite;
+}
+.ticker-item{color:rgba(255,255,255,.88);font-size:13px;font-weight:600;display:flex;align-items:center;gap:14px}
+.ticker-item::after{content:'✦';opacity:.4;font-size:9px}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ─── SECTION COMMON ─────────────────────────────────────────────────────── */
+section{padding:100px 0}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:10px}
+h2{font-family:var(--serif);font-size:clamp(32px,4vw,50px);font-weight:700;line-height:1.15;letter-spacing:-.4px;color:var(--brown);margin-bottom:16px}
+h2 em{font-style:italic;color:var(--green)}
+.section-lead{font-size:17px;color:var(--taupe);line-height:1.8;max-width:560px}
+.divider{width:48px;height:3px;border-radius:2px;background:var(--green);margin-bottom:20px}
+
+/* ─── PRODUCTS ───────────────────────────────────────────────────────────── */
+#products{background:#fff}
+.prod-header{text-align:center;margin-bottom:64px}
+.prod-header .section-lead{margin:0 auto}
+.prod-header .divider{margin:0 auto 20px}
+
+.prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:28px}
+.prod-card{
+  border-radius:var(--radius-lg);overflow:hidden;
+  border:1px solid rgba(44,26,0,.07);background:var(--cream);
+  transition:transform .28s cubic-bezier(.22,1,.36,1),box-shadow .28s;
+  position:relative;
+}
+.prod-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg)}
+.prod-card.hero-prod{background:var(--brown);border-color:transparent}
+.prod-thumb{
+  height:196px;display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.pt-bg-dots{
+  position:absolute;inset:0;opacity:.12;
+  background-image:radial-gradient(currentColor 1px,transparent 1px);
+  background-size:18px 18px;
+}
+.prod-emoji{font-size:56px;position:relative;z-index:2;filter:drop-shadow(0 4px 12px rgba(0,0,0,.12))}
+.prod-badge{
+  position:absolute;top:14px;right:14px;z-index:3;
+  font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  background:#fff;padding:5px 12px;border-radius:100px;box-shadow:var(--shadow-sm);
+}
+.prod-body{padding:24px}
+.prod-cat{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.prod-name{font-family:var(--serif);font-size:21px;font-weight:700;color:var(--brown);line-height:1.25;margin-bottom:10px}
+.prod-desc{font-size:13px;color:var(--taupe);line-height:1.7;margin-bottom:16px}
+.prod-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:20px}
+.ptag{background:rgba(44,26,0,.05);color:var(--taupe);font-size:11px;font-weight:500;padding:4px 10px;border-radius:100px}
+.prod-foot{display:flex;align-items:center;justify-content:space-between;padding-top:16px;border-top:1px solid rgba(44,26,0,.07)}
+.prod-price{font-family:var(--serif);font-size:24px;font-weight:700}
+.prod-price small{font-size:12px;font-family:var(--sans);color:var(--muted);font-weight:400;margin-left:2px}
+.prod-btn{
+  padding:9px 20px;border-radius:100px;font-size:12px;font-weight:700;
+  color:#fff;background:var(--green);transition:.2s;cursor:none;
+}
+.prod-btn:hover{background:var(--green-dk);transform:translateY(-1px)}
+
+/* Featured card overrides */
+.prod-card.hero-prod .prod-cat{color:rgba(255,255,255,.4)}
+.prod-card.hero-prod .prod-name{color:#fff}
+.prod-card.hero-prod .prod-desc{color:rgba(255,255,255,.6)}
+.prod-card.hero-prod .ptag{background:rgba(255,255,255,.1);color:rgba(255,255,255,.7)}
+.prod-card.hero-prod .prod-foot{border-color:rgba(255,255,255,.1)}
+.prod-card.hero-prod .prod-price{color:var(--gold)}
+.prod-card.hero-prod .prod-price small{color:rgba(255,255,255,.35)}
+.prod-card.hero-prod .prod-btn{background:var(--gold);color:var(--brown)}
+.prod-card.hero-prod .prod-btn:hover{background:#dfc07a}
+
+/* Bundle */
+.bundle{
+  background:linear-gradient(135deg,#073D30,var(--green));
+  border-radius:var(--radius-xl);padding:44px 48px;
+  display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center;
+  position:relative;overflow:hidden;margin-top:28px;
+}
+.bundle::before{content:'';position:absolute;right:-80px;top:-80px;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.04)}
+.bundle::after{content:'';position:absolute;right:120px;bottom:-80px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.03)}
+.bundle-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:10px}
+.bundle-title{font-family:var(--serif);font-size:32px;font-weight:700;color:#fff;line-height:1.2;margin-bottom:10px}
+.bundle-desc{font-size:14px;color:rgba(255,255,255,.72);line-height:1.75}
+.bundle-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.bchip{background:rgba(255,255,255,.1);color:rgba(255,255,255,.88);font-size:12px;font-weight:500;padding:6px 14px;border-radius:100px;border:1px solid rgba(255,255,255,.13)}
+.bundle-right{text-align:center;position:relative;z-index:2}
+.bundle-was{font-size:15px;color:rgba(255,255,255,.35);text-decoration:line-through;margin-bottom:4px}
+.bundle-price{font-family:var(--serif);font-size:52px;font-weight:700;color:var(--gold);line-height:1}
+.bundle-note{font-size:11px;color:rgba(255,255,255,.5);margin-bottom:20px;margin-top:4px}
+.bundle-btn{
+  background:var(--gold);color:var(--brown);
+  padding:16px 36px;border-radius:100px;
+  font-size:15px;font-weight:700;display:inline-block;
+  box-shadow:0 6px 28px rgba(0,0,0,.25);transition:.2s;cursor:none;
+  white-space:nowrap;
+}
+.bundle-btn:hover{background:#e5cb82;transform:translateY(-3px)}
+
+/* ─── SOCIAL PROOF BAR ───────────────────────────────────────────────────── */
+.proof-bar{background:var(--green-lt);padding:40px 0;border-top:1px solid rgba(29,158,117,.12);border-bottom:1px solid rgba(29,158,117,.12)}
+.proof-inner{display:flex;align-items:center;justify-content:center;gap:64px;flex-wrap:wrap}
+.proof-stat{text-align:center}
+.proof-num{font-family:var(--serif);font-size:38px;font-weight:700;color:var(--green-dk);line-height:1}
+.proof-label{font-size:13px;color:var(--taupe);margin-top:4px;font-weight:500}
+
+/* ─── HOW IT WORKS ───────────────────────────────────────────────────────── */
+#how{background:var(--cream)}
+.how-wrap{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.how-steps{margin-top:36px;display:flex;flex-direction:column;gap:28px}
+.how-step{display:flex;gap:18px;align-items:flex-start;padding:20px;border-radius:var(--radius);transition:.2s;cursor:default}
+.how-step:hover{background:#fff;box-shadow:var(--shadow-sm)}
+.step-orb{
+  width:46px;height:46px;border-radius:14px;flex-shrink:0;
+  background:var(--green-lt);display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);font-size:20px;font-weight:700;color:var(--green);
+  transition:.2s;
+}
+.how-step:hover .step-orb{background:var(--green);color:#fff}
+.step-h{font-weight:700;font-size:15px;color:var(--brown);margin-bottom:5px}
+.step-p{font-size:13px;color:var(--taupe);line-height:1.65}
+
+.how-visual{
+  background:var(--green-dk);border-radius:var(--radius-xl);
+  padding:40px 36px;min-height:500px;
+  display:flex;flex-direction:column;justify-content:space-between;
+  position:relative;overflow:hidden;
+}
+.hv-orb1{position:absolute;top:-60px;right:-60px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,.04)}
+.hv-orb2{position:absolute;bottom:-80px;left:-40px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.03)}
+.hv-top{position:relative;z-index:2}
+.hv-label{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:8px}
+.hv-title{font-family:var(--serif);font-size:28px;font-weight:700;color:#fff;line-height:1.25}
+.hv-stats{display:grid;grid-template-columns:1fr 1fr;gap:14px;position:relative;z-index:2}
+.hv-stat{background:rgba(255,255,255,.08);border-radius:14px;padding:20px 16px;border:1px solid rgba(255,255,255,.06)}
+.hv-stat-n{font-family:var(--serif);font-size:36px;font-weight:700;color:var(--gold);line-height:1;margin-bottom:5px}
+.hv-stat-l{font-size:12px;color:rgba(255,255,255,.55)}
+.hv-review{background:rgba(255,255,255,.09);border-radius:14px;padding:20px;border:1px solid rgba(255,255,255,.08);position:relative;z-index:2}
+.hv-stars{color:var(--gold);font-size:15px;margin-bottom:10px}
+.hv-quote{font-size:13px;color:rgba(255,255,255,.82);line-height:1.7;font-style:italic;margin-bottom:12px}
+.hv-author{font-size:11px;color:rgba(255,255,255,.38);font-weight:600}
+
+/* ─── TOPICS ─────────────────────────────────────────────────────────────── */
+#topics{background:#fff}
+.topics-head{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;margin-bottom:52px}
+.topics-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.topic-tile{
+  border-radius:var(--radius);padding:24px 20px;cursor:none;
+  transition:transform .22s cubic-bezier(.22,1,.36,1),box-shadow .22s;
+  border:1.5px solid transparent;
+}
+.topic-tile:hover{transform:translateY(-6px);box-shadow:var(--shadow-md)}
+.tt-g{background:var(--green-lt);color:var(--green-dk)}
+.tt-g:hover{border-color:var(--green)}
+.tt-pu{background:var(--purple-lt);color:#3C3489}
+.tt-pu:hover{border-color:var(--purple)}
+.tt-am{background:var(--amber-lt);color:#633806}
+.tt-am:hover{border-color:var(--amber)}
+.tt-co{background:var(--coral-lt);color:#712B13}
+.tt-co:hover{border-color:var(--coral)}
+.tt-go{background:var(--gold-lt);color:var(--gold-dk)}
+.tt-go:hover{border-color:var(--gold)}
+.tt-gr{background:#F0F7FF;color:#055C77}
+.tt-gr:hover{border-color:#85B7EB}
+.tt-gn{background:#EAF3DE;color:#27500A}
+.tt-gn:hover{border-color:#7DB855}
+.tt-wa{background:#F5F0FF;color:#4B2D9E}
+.tt-wa:hover{border-color:#9B7EF8}
+.topic-icon{font-size:34px;margin-bottom:13px;display:block}
+.topic-name{font-weight:700;font-size:14px;margin-bottom:4px}
+.topic-sub{font-size:12px;opacity:.7;line-height:1.4}
+
+/* ─── TESTIMONIALS ───────────────────────────────────────────────────────── */
+#testimonials{background:var(--warm)}
+.testi-head{text-align:center;margin-bottom:56px}
+.testi-head .section-lead{margin:0 auto}
+.testi-head .divider{margin:0 auto 20px}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.tc{
+  background:#fff;border-radius:var(--radius-lg);padding:28px;
+  border:1px solid rgba(44,26,0,.05);
+  transition:transform .22s,box-shadow .22s;
+}
+.tc:hover{transform:translateY(-5px);box-shadow:var(--shadow-md)}
+.tc.dark{background:var(--green-dk);border-color:transparent}
+.tc-stars{color:var(--gold);font-size:16px;margin-bottom:14px}
+.tc-body{font-size:14px;color:var(--taupe);line-height:1.78;font-style:italic;margin-bottom:22px}
+.tc.dark .tc-body{color:rgba(255,255,255,.78)}
+.tc-foot{display:flex;align-items:center;gap:12px}
+.tc-av{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0}
+.tc-name{font-weight:700;font-size:14px;color:var(--brown)}
+.tc.dark .tc-name{color:#fff}
+.tc-role{font-size:11px;color:var(--muted)}
+
+/* ─── FREEBIE ────────────────────────────────────────────────────────────── */
+#freebie{background:var(--green);padding:88px 0}
+.free-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.free-ey{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:12px}
+.free-title{font-family:var(--serif);font-size:clamp(30px,4vw,46px);font-weight:700;color:#fff;line-height:1.18;margin-bottom:16px}
+.free-desc{font-size:15px;color:rgba(255,255,255,.78);line-height:1.8;margin-bottom:30px}
+.free-form{display:flex;gap:10px;max-width:440px;margin-bottom:12px}
+.free-form input{
+  flex:1;padding:15px 20px;border-radius:100px;border:none;
+  font-size:14px;font-family:var(--sans);outline:none;color:var(--brown);
+  box-shadow:0 4px 20px rgba(0,0,0,.12);
+}
+.free-form button{
+  background:var(--gold);color:var(--brown);
+  padding:15px 26px;border-radius:100px;border:none;
+  font-size:14px;font-weight:700;font-family:var(--sans);
+  cursor:none;transition:.2s;white-space:nowrap;
+  box-shadow:0 4px 20px rgba(0,0,0,.15);
+}
+.free-form button:hover{background:#e5cb82;transform:translateY(-2px)}
+.free-small{font-size:12px;color:rgba(255,255,255,.42)}
+.free-success{display:none;color:#fff;font-weight:700;font-size:15px;margin-top:10px}
+
+.free-preview{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:var(--radius-lg);padding:28px}
+.fp-title{font-weight:700;font-size:15px;color:#fff;margin-bottom:18px;display:flex;align-items:center;gap:9px}
+.fp-row{
+  display:flex;justify-content:space-between;align-items:center;
+  background:rgba(255,255,255,.08);border-radius:10px;padding:13px 16px;margin-bottom:8px;
+}
+.fp-left{display:flex;gap:11px;align-items:center}
+.fp-n{width:26px;height:26px;border-radius:8px;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;flex-shrink:0}
+.fp-lbl{font-size:13px;color:rgba(255,255,255,.82)}
+.fp-ans{font-size:11px;font-weight:700;padding:4px 11px;border-radius:100px}
+.fp-yes{background:rgba(255,255,255,.18);color:#fff}
+.fp-wait{background:rgba(255,255,255,.07);color:rgba(255,255,255,.45)}
+.fp-verse{font-size:12px;color:rgba(255,255,255,.38);text-align:center;margin-top:16px;font-style:italic}
+
+/* ─── ABOUT ──────────────────────────────────────────────────────────────── */
+#about{background:#fff}
+.about-wrap{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-visual{background:var(--gold-lt);border-radius:var(--radius-xl);padding:44px;position:relative;overflow:hidden}
+.av-orb{position:absolute;bottom:-60px;right:-60px;width:200px;height:200px;border-radius:50%;background:rgba(201,169,110,.2)}
+.av-mark{font-family:var(--serif);font-size:96px;color:var(--gold);line-height:.75;margin-bottom:-12px;position:relative;z-index:2}
+.av-quote{font-family:var(--serif);font-size:22px;font-style:italic;color:var(--brown);line-height:1.5;margin-bottom:16px;position:relative;z-index:2}
+.av-ref{font-size:14px;color:var(--taupe);font-weight:600;position:relative;z-index:2}
+.av-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:28px;position:relative;z-index:2}
+.av-stat{background:#fff;border-radius:12px;padding:14px;text-align:center}
+.av-n{font-family:var(--serif);font-size:28px;font-weight:700;color:var(--green);line-height:1}
+.av-l{font-size:11px;color:var(--muted);margin-top:3px}
+.about-text .eyebrow{margin-bottom:10px}
+.about-text p{font-size:15px;color:var(--taupe);line-height:1.82;margin-bottom:18px}
+.about-pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.about-pill{
+  display:flex;align-items:center;gap:8px;
+  background:var(--green-lt);padding:9px 16px;border-radius:100px;
+  font-size:13px;font-weight:700;color:var(--green-dk);
+}
+
+/* ─── FAQ ────────────────────────────────────────────────────────────────── */
+#faq{background:var(--cream)}
+.faq-wrap{display:grid;grid-template-columns:1fr 2fr;gap:80px}
+.faq-aside .section-lead{font-size:15px;margin-bottom:24px}
+.faq-cta-box{background:var(--green-lt);border-radius:var(--radius);padding:22px;border:1px solid rgba(29,158,117,.15)}
+.faq-cta-box p{font-size:13px;color:var(--green-dk);margin-bottom:14px;font-weight:500;line-height:1.6}
+.faq-cta-box a{
+  background:var(--green);color:#fff;font-size:13px;font-weight:700;
+  padding:10px 22px;border-radius:100px;display:inline-block;transition:.2s;
+}
+.faq-cta-box a:hover{background:var(--green-dk)}
+.faq-list{display:flex;flex-direction:column;gap:10px}
+.faq-item{background:#fff;border-radius:14px;overflow:hidden;border:1px solid rgba(44,26,0,.06)}
+.faq-q{
+  padding:20px 24px;cursor:none;user-select:none;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  font-weight:700;font-size:14px;color:var(--brown);transition:color .2s;
+}
+.faq-q:hover{color:var(--green)}
+.faq-icon{font-size:22px;color:var(--muted);transition:transform .3s;flex-shrink:0;line-height:1}
+.faq-item.open .faq-icon{transform:rotate(180deg)}
+.faq-a{
+  display:none;padding:16px 24px 22px;
+  font-size:14px;color:var(--taupe);line-height:1.78;
+  border-top:1px solid var(--warm);
+}
+.faq-item.open .faq-a{display:block}
+
+/* ─── CTA STRIP ──────────────────────────────────────────────────────────── */
+.cta-strip{
+  background:var(--brown);padding:80px 0;
+  position:relative;overflow:hidden;
+}
+.cta-strip::before{content:'';position:absolute;right:-100px;top:50%;transform:translateY(-50%);width:400px;height:400px;border-radius:50%;background:rgba(255,255,255,.03)}
+.cta-inner{position:relative;z-index:2;text-align:center}
+.cta-inner h2{color:#fff;margin-bottom:14px}
+.cta-inner p{font-size:17px;color:rgba(255,255,255,.65);margin-bottom:36px}
+.cta-btns{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}
+
+/* ─── FOOTER ─────────────────────────────────────────────────────────────── */
+footer{background:#1A0F00;padding:68px 0 32px}
+.foot-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:52px}
+.foot-brand p{font-size:14px;color:rgba(255,255,255,.5);line-height:1.75;max-width:270px;margin-top:14px}
+.foot-social{display:flex;gap:9px;margin-top:22px}
+.foot-social a{
+  width:38px;height:38px;border-radius:10px;
+  background:rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;font-size:17px;
+  transition:background .2s;cursor:none;
+}
+.foot-social a:hover{background:var(--green)}
+.foot-col h4{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:18px}
+.foot-col a{display:block;font-size:14px;color:rgba(255,255,255,.55);margin-bottom:11px;transition:color .2s;cursor:none}
+.foot-col a:hover{color:var(--green-md)}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+.foot-bottom p{font-size:12px;color:rgba(255,255,255,.3)}
+.foot-badges{display:flex;gap:8px}
+.fbadge{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);padding:5px 13px;border-radius:100px;font-size:11px;color:rgba(255,255,255,.38)}
+
+/* ─── MOBILE ─────────────────────────────────────────────────────────────── */
+@media(max-width:1024px){
+  .hero-inner{grid-template-columns:1fr;gap:56px}
+  .hero-right{max-width:460px;margin:0 auto;order:-1}
+  .prod-grid{grid-template-columns:1fr 1fr}
+  .how-wrap{grid-template-columns:1fr}
+  .topics-head{grid-template-columns:1fr}
+  .topics-grid{grid-template-columns:repeat(2,1fr)}
+  .testi-grid{grid-template-columns:1fr 1fr}
+  .free-inner{grid-template-columns:1fr}
+  .about-wrap{grid-template-columns:1fr}
+  .faq-wrap{grid-template-columns:1fr}
+  .foot-top{grid-template-columns:1fr 1fr}
+  .bundle{grid-template-columns:1fr;text-align:center}
+  .proof-inner{gap:36px}
+}
+@media(max-width:768px){
+  section{padding:72px 0}
+  .nav-links{display:none}
+  .burger{display:flex}
+  .cursor,.cursor-ring{display:none}
+  body{cursor:auto}
+  a,button,.faq-q,.topic-tile,.prod-card,.tc,.how-step{cursor:pointer}
+  .prod-grid{grid-template-columns:1fr}
+  .testi-grid{grid-template-columns:1fr}
+  .topics-grid{grid-template-columns:repeat(2,1fr)}
+  .hero-actions{flex-direction:column;align-items:flex-start}
+  .free-form{flex-direction:column}
+  .foot-top{grid-template-columns:1fr}
+  .bundle{padding:32px 28px}
+}
+</style>
+</head>
+<body>
+
+<!-- Custom Cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- ── NAV ───────────────────────────────────────────────────────────────── -->
+<nav id="mainNav">
+  <a href="#home" class="nav-brand">
+    <div class="nav-orb">S</div>
+    <div class="nav-name">SmartStartHub <small>Faith Printables</small></div>
+  </a>
+  <div class="nav-links">
+    <a href="#products">Shop</a>
+    <a href="#topics">Topics</a>
+    <a href="#how">How It Works</a>
+    <a href="#about">About</a>
+    <a href="#freebie">Free Gift</a>
+    <a href="https://smartstarthub.etsy.com" target="_blank" class="nav-etsy">🛒 Open Etsy Shop</a>
+  </div>
+  <div class="burger" id="burger" onclick="toggleDrawer()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<div class="drawer" id="drawer">
+  <a href="#products" onclick="closeDrawer()">🛍️ Shop All Products</a>
+  <a href="#topics" onclick="closeDrawer()">📌 Browse by Topic</a>
+  <a href="#how" onclick="closeDrawer()">⚡ How It Works</a>
+  <a href="#freebie" onclick="closeDrawer()">🎁 Get Free Printable</a>
+  <a href="#about" onclick="closeDrawer()">💛 About Us</a>
+  <a href="https://smartstarthub.etsy.com" target="_blank" class="btn btn-green" style="justify-content:center">🛒 Visit Etsy Shop</a>
+</div>
+
+<!-- ── HERO ───────────────────────────────────────────────────────────────── -->
+<section class="hero" id="home">
+  <div class="hero-mesh"></div>
+  <div class="hero-dots"></div>
+  <div class="container">
+    <div class="hero-inner">
+
+      <div class="hero-left">
+        <div class="hero-tag" data-reveal>Faith-Based Printables for Families</div>
+        <h1 data-reveal data-delay="1">Help your family grow <em>deeper</em> in God's Word</h1>
+        <p class="hero-sub" data-reveal data-delay="2">Beautiful, done-for-you printable resources for homeschool families, Sunday school teachers, and Christian parents. Print today — use tomorrow.</p>
+        <div class="hero-actions" data-reveal data-delay="3">
+          <a href="#products" class="btn btn-green">Browse All Products →</a>
+          <a href="#freebie" class="btn btn-outline">🎁 Get a Free Printable</a>
+        </div>
+        <div class="hero-social" data-reveal data-delay="4">
+          <div class="hero-faces">
+            <span>👩</span><span>🙏</span><span>📖</span><span>👨</span><span>✝️</span>
+          </div>
+          <div class="hero-social-text">
+            <strong>Trusted by homeschool families worldwide</strong>
+            Download · Print · Use — in under 20 minutes
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right" data-reveal data-delay="2">
+        <div class="hero-card-wrap">
+          <div class="hc-shadow2"></div>
+          <div class="hc-shadow"></div>
+          <div class="hero-card">
+            <div class="hc-head">
+              <div class="hc-icon">🙏</div>
+              <div class="hc-meta">
+                <p>Kids Guided Prayer Journal</p>
+                <p>Girls & Neutral Editions · 38 pages each</p>
+              </div>
+            </div>
+            <div class="hc-chips">
+              <span class="chip chip-g">28 Daily Prayer Pages</span>
+              <span class="chip chip-au">Verse Tracker</span>
+              <span class="chip chip-p">Answers Log</span>
+              <span class="chip chip-c">Emotion Prayers</span>
+              <span class="chip chip-a">ACTS Guide</span>
+              <span class="chip chip-g">People I'm Praying For</span>
+            </div>
+            <div class="hc-foot">
+              <div class="hc-price">₱300 <sub>per edition</sub></div>
+              <a href="https://smartstarthub.etsy.com" target="_blank" class="hc-cta">Shop Now →</a>
+            </div>
+          </div>
+          <div class="hc-float hf-left">
+            <div class="hc-float-icon">⚡</div>
+            <div class="hc-float-text">
+              <p>Instant Download</p>
+              <p>Print in minutes</p>
+            </div>
+          </div>
+          <div class="hc-float hf-right">
+            <div class="hc-float-icon">📄</div>
+            <div class="hc-float-text">
+              <p>US Letter + A4</p>
+              <p>Both sizes included</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── TICKER ─────────────────────────────────────────────────────────────── -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="ticker-item">Bible Memory Verse Flashcards</span>
+    <span class="ticker-item">Fruit of the Spirit Unit Study</span>
+    <span class="ticker-item">Kids Guided Prayer Journal</span>
+    <span class="ticker-item">SOAP Bible Study Journals</span>
+    <span class="ticker-item">Sunday School Printables</span>
+    <span class="ticker-item">Homeschool Curriculum</span>
+    <span class="ticker-item">Christmas Advent Plan</span>
+    <span class="ticker-item">VBS Take-Home Packets</span>
+    <span class="ticker-item">Faith Journals for Women</span>
+    <span class="ticker-item">Instant Download PDFs</span>
+    <!-- duplicate -->
+    <span class="ticker-item">Bible Memory Verse Flashcards</span>
+    <span class="ticker-item">Fruit of the Spirit Unit Study</span>
+    <span class="ticker-item">Kids Guided Prayer Journal</span>
+    <span class="ticker-item">SOAP Bible Study Journals</span>
+    <span class="ticker-item">Sunday School Printables</span>
+    <span class="ticker-item">Homeschool Curriculum</span>
+    <span class="ticker-item">Christmas Advent Plan</span>
+    <span class="ticker-item">VBS Take-Home Packets</span>
+    <span class="ticker-item">Faith Journals for Women</span>
+    <span class="ticker-item">Instant Download PDFs</span>
+  </div>
+</div>
+
+<!-- ── SOCIAL PROOF BAR ───────────────────────────────────────────────────── -->
+<div class="proof-bar">
+  <div class="container">
+    <div class="proof-inner">
+      <div class="proof-stat" data-reveal>
+        <div class="proof-num">50+</div>
+        <div class="proof-label">Pages per curriculum</div>
+      </div>
+      <div class="proof-stat" data-reveal data-delay="1">
+        <div class="proof-num">2</div>
+        <div class="proof-label">Paper sizes in every download</div>
+      </div>
+      <div class="proof-stat" data-reveal data-delay="2">
+        <div class="proof-num">∞</div>
+        <div class="proof-label">Times you can reprint</div>
+      </div>
+      <div class="proof-stat" data-reveal data-delay="3">
+        <div class="proof-num">0</div>
+        <div class="proof-label">Minutes of prep needed</div>
+      </div>
+      <div class="proof-stat" data-reveal data-delay="4">
+        <div class="proof-num">5★</div>
+        <div class="proof-label">Verified buyer ratings</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── PRODUCTS ───────────────────────────────────────────────────────────── -->
+<section id="products">
+  <div class="container">
+    <div class="prod-header" data-reveal>
+      <div class="divider"></div>
+      <div class="eyebrow">Our Products</div>
+      <h2>Printables your family will <em>love & use</em></h2>
+      <p class="section-lead">Every product is a complete, ready-to-print resource. No prep, no planning — just download, print, and begin.</p>
+    </div>
+
+    <div class="prod-grid">
+
+      <div class="prod-card" data-reveal data-delay="1">
+        <div class="prod-thumb" style="background:var(--green-lt);color:var(--green)">
+          <div class="pt-bg-dots"></div>
+          <div class="prod-emoji">📇</div>
+          <div class="prod-badge" style="color:var(--green-dk)">Ages 2–12</div>
+        </div>
+        <div class="prod-body">
+          <p class="prod-cat">Scripture Flashcard System</p>
+          <h3 class="prod-name">Bible Memory Verse Flashcards</h3>
+          <p class="prod-desc">30–35 print-and-cut scripture cards per deck with age-appropriate verses, illustrated themes, and memory activities on the back.</p>
+          <div class="prod-tags">
+            <span class="ptag">3 Age Levels</span><span class="ptag">Front & Back</span>
+            <span class="ptag">Progress Tracker</span><span class="ptag">Parent Guide</span>
+          </div>
+          <div class="prod-foot">
+            <div class="prod-price" style="color:var(--green)">₱300 <small>per deck</small></div>
+            <a href="https://smartstarthub.etsy.com" target="_blank" class="prod-btn">Shop Now →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="prod-card hero-prod" data-reveal data-delay="2">
+        <div class="prod-thumb" style="background:rgba(255,255,255,.06);color:var(--gold)">
+          <div class="pt-bg-dots"></div>
+          <div class="prod-emoji">🍇</div>
+          <div class="prod-badge" style="background:var(--gold);color:var(--brown)">⭐ BESTSELLER</div>
+        </div>
+        <div class="prod-body">
+          <p class="prod-cat">9-Week Homeschool Curriculum</p>
+          <h3 class="prod-name">Fruit of the Spirit Unit Study</h3>
+          <p class="prod-desc">A complete 50+ page character curriculum. One fruit per week — devotionals, journaling, hands-on activities, discussion questions, and coloring pages.</p>
+          <div class="prod-tags">
+            <span class="ptag">50+ Pages</span><span class="ptag">9 Weekly Lessons</span>
+            <span class="ptag">Certificate</span><span class="ptag">Verse Bookmark</span>
+          </div>
+          <div class="prod-foot">
+            <div class="prod-price">₱650 <small>full unit</small></div>
+            <a href="https://smartstarthub.etsy.com" target="_blank" class="prod-btn">Shop Now →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="prod-card" data-reveal data-delay="3">
+        <div class="prod-thumb" style="background:var(--coral-lt);color:var(--coral)">
+          <div class="pt-bg-dots"></div>
+          <div class="prod-emoji">📔</div>
+          <div class="prod-badge" style="color:var(--coral)">Ages 5–12</div>
+        </div>
+        <div class="prod-body">
+          <p class="prod-cat">Guided Prayer Journal</p>
+          <h3 class="prod-name">Kids Guided Prayer Journal</h3>
+          <p class="prod-desc">38 pages of guided daily prayer prompts using the ACTS method, weekly Bible verse pages, a Prayers & Answers tracker, and emotion prayers.</p>
+          <div class="prod-tags">
+            <span class="ptag">38 Pages</span><span class="ptag">Girls + Neutral</span>
+            <span class="ptag">ACTS Guide</span><span class="ptag">Answer Tracker</span>
+          </div>
+          <div class="prod-foot">
+            <div class="prod-price" style="color:var(--coral)">₱300 <small>per edition</small></div>
+            <a href="https://smartstarthub.etsy.com" target="_blank" class="prod-btn" style="background:var(--coral)">Shop Now →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="prod-card" data-reveal>
+        <div class="prod-thumb" style="background:var(--purple-lt);color:var(--purple)">
+          <div class="pt-bg-dots"></div>
+          <div class="prod-emoji">📖</div>
+          <div class="prod-badge" style="color:var(--purple)">All Ages</div>
+        </div>
+        <div class="prod-body">
+          <p class="prod-cat">Bible Study</p>
+          <h3 class="prod-name">SOAP Bible Study Journal</h3>
+          <p class="prod-desc">Structured daily devotional using the Scripture, Observation, Application, Prayer method. Multiple beautiful themes available.</p>
+          <div class="prod-tags">
+            <span class="ptag">Multiple Themes</span><span class="ptag">Daily Pages</span><span class="ptag">Prayer Log</span>
+          </div>
+          <div class="prod-foot">
+            <div class="prod-price" style="color:var(--purple)">₱330 <small>per journal</small></div>
+            <a href="https://smartstarthub.etsy.com" target="_blank" class="prod-btn" style="background:var(--purple)">Shop Now →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="prod-card" data-reveal data-delay="1">
+        <div class="prod-thumb" style="background:var(--amber-lt);color:var(--amber)">
+          <div class="pt-bg-dots"></div>
+          <div class="prod-emoji">⛪</div>
+          <div class="prod-badge" style="color:var(--amber)">Sunday School</div>
+        </div>
+        <div class="prod-body">
+          <p class="prod-cat">Sunday School Pack</p>
+          <h3 class="prod-name">VBS Take-Home Activity Packets</h3>
+          <p class="prod-desc">5-session take-home packets for Vacation Bible School with scripture cards, activity pages, and prayer prompts for each session.</p>
+          <div class="prod-tags">
+            <span class="ptag">5 Sessions</span><span class="ptag">Scripture Cards</span><span class="ptag">Activities</span>
+          </div>
+          <div class="prod-foot">
+            <div class="prod-price" style="color:var(--amber)">₱350 <small>5-session set</small></div>
+            <a href="https://smartstarthub.etsy.com" target="_blank" class="prod-btn" style="background:var(--amber)">Shop Now →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="prod-card" data-reveal data-delay="2">
+        <div class="prod-thumb" style="background:var(--gold-lt);color:var(--gold-dk)">
+          <div class="pt-bg-dots"></div>
+          <div class="prod-emoji">🎄</div>
+          <div class="prod-badge" style="color:var(--gold-dk)">Seasonal</div>
+        </div>
+        <div class="prod-body">
+          <p class="prod-cat">Seasonal Collection</p>
+          <h3 class="prod-name">Christmas Advent Bible Plan</h3>
+          <p class="prod-desc">25-day printable Advent reading plan with daily scripture, family activity suggestions, and a reflection prompt for each day of December.</p>
+          <div class="prod-tags">
+            <span class="ptag">25 Days</span><span class="ptag">Family Activities</span><span class="ptag">Bundle Available</span>
+          </div>
+          <div class="prod-foot">
+            <div class="prod-price" style="color:var(--gold-dk)">₱400 <small>full plan</small></div>
+            <a href="https://smartstarthub.etsy.com" target="_blank" class="prod-btn" style="background:var(--gold);color:var(--brown)">Shop Now →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bundle -->
+    <div class="bundle" data-reveal>
+      <div>
+        <p class="bundle-label">🔥 Best Value — Save 40%</p>
+        <h3 class="bundle-title">Back-to-School Homeschool Mega Bundle</h3>
+        <p class="bundle-desc">Everything you need for a full year of faith-based learning in one single download. Includes the Fruit of the Spirit Unit Study, all 3 Flashcard Decks, both Prayer Journal editions, SOAP Journal, and bonus seasonal pages.</p>
+        <div class="bundle-chips">
+          <span class="bchip">🍇 Unit Study (9 weeks)</span>
+          <span class="bchip">📇 3 Flashcard Decks</span>
+          <span class="bchip">📔 Prayer Journal ×2</span>
+          <span class="bchip">📖 SOAP Journal</span>
+          <span class="bchip">+ Bonus Pages</span>
+        </div>
+      </div>
+      <div class="bundle-right">
+        <div class="bundle-was">₱2,280 separately</div>
+        <div class="bundle-price">₱1,500</div>
+        <div class="bundle-note">One-time download · Print unlimited times</div>
+        <a href="https://smartstarthub.etsy.com" target="_blank" class="bundle-btn">Get the Bundle →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── HOW IT WORKS ────────────────────────────────────────────────────────── -->
+<section id="how">
+  <div class="container">
+    <div class="how-wrap">
+      <div>
+        <div class="eyebrow" data-reveal>How It Works</div>
+        <h2 data-reveal data-delay="1">From checkout to <em>classroom</em> in 20 minutes</h2>
+        <div class="how-steps">
+          <div class="how-step" data-reveal data-delay="1">
+            <div class="step-orb">1</div>
+            <div>
+              <p class="step-h">Choose your product</p>
+              <p class="step-p">Browse by age group, topic, or occasion. Every listing shows exactly what's inside with page-by-page details before you buy.</p>
+            </div>
+          </div>
+          <div class="how-step" data-reveal data-delay="2">
+            <div class="step-orb">2</div>
+            <div>
+              <p class="step-h">Instant download after purchase</p>
+              <p class="step-p">After your Etsy purchase, your PDF is available immediately. No waiting, no shipping. Both US Letter and A4 sizes included in every download.</p>
+            </div>
+          </div>
+          <div class="how-step" data-reveal data-delay="3">
+            <div class="step-orb">3</div>
+            <div>
+              <p class="step-h">Print at home — any printer works</p>
+              <p class="step-p">Use regular copy paper or cardstock. Most products need zero cutting — just print and start using. Flashcards include clear dotted cut guides.</p>
+            </div>
+          </div>
+          <div class="how-step" data-reveal data-delay="4">
+            <div class="step-orb">4</div>
+            <div>
+              <p class="step-h">Use again and again — forever</p>
+              <p class="step-p">Your download is yours forever. Reprint every year for new siblings, Sunday school classes, or fresh semesters. No extra cost, ever.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="how-visual" data-reveal data-delay="2">
+        <div class="hv-orb1"></div>
+        <div class="hv-orb2"></div>
+        <div class="hv-top">
+          <p class="hv-label">SmartStartHub</p>
+          <h3 class="hv-title">Faith resources that actually get used every day</h3>
+        </div>
+        <div class="hv-stats">
+          <div class="hv-stat">
+            <div class="hv-stat-n">50+</div>
+            <div class="hv-stat-l">Pages per full curriculum</div>
+          </div>
+          <div class="hv-stat">
+            <div class="hv-stat-n">2</div>
+            <div class="hv-stat-l">Paper sizes per download</div>
+          </div>
+          <div class="hv-stat">
+            <div class="hv-stat-n">∞</div>
+            <div class="hv-stat-l">Times you can reprint</div>
+          </div>
+          <div class="hv-stat">
+            <div class="hv-stat-n">0</div>
+            <div class="hv-stat-l">Minutes of prep needed</div>
+          </div>
+        </div>
+        <div class="hv-review">
+          <div class="hv-stars">★★★★★</div>
+          <p class="hv-quote">"My granddaughter LOVES her prayer journal. She uses it every single morning before school. Best purchase I've made for her faith journey."</p>
+          <p class="hv-author">— JoAnn R., verified Etsy buyer</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TOPICS ─────────────────────────────────────────────────────────────── -->
+<section id="topics">
+  <div class="container">
+    <div class="topics-head">
+      <div>
+        <div class="eyebrow" data-reveal>Shop by Topic</div>
+        <h2 data-reveal data-delay="1">Find exactly what <em>you need</em></h2>
+      </div>
+      <p class="section-lead" data-reveal>From Bible study and prayer to seasonal celebrations and homeschool curriculum — faith resources for every season of family life.</p>
+    </div>
+    <div class="topics-grid">
+      <a href="https://smartstarthub.etsy.com" target="_blank" class="topic-tile tt-g" data-reveal>
+        <span class="topic-icon">📖</span>
+        <p class="topic-name">Bible Study</p>
+        <p class="topic-sub">Journals · Templates · SOAP</p>
+      </a>
+      <a href="https://smartstarthub.etsy.com" target="_blank" class="topic-tile tt-pu" data-reveal data-delay="1">
+        <span class="topic-icon">🙏</span>
+        <p class="topic-name">Prayer</p>
+        <p class="topic-sub">Journals · Trackers · Guides</p>
+      </a>
+      <a href="https://smartstarthub.etsy.com" target="_blank" class="topic-tile tt-am" data-reveal data-delay="2">
+        <span class="topic-icon">🏠</span>
+        <p class="topic-name">Homeschool</p>
+        <p class="topic-sub">Curriculum · Unit Studies</p>
+      </a>
+      <a href="https://smartstarthub.etsy.com" target="_blank" class="topic-tile tt-co" data-reveal data-delay="3">
+        <span class="topic-icon">⛪</span>
+        <p class="topic-name">Sunday School</p>
+        <p class="topic-sub">Lessons · VBS · Take-Homes</p>
+      </a>
+      <a href="https://smartstarthub.etsy.com" target="_blank" class="topic-tile tt-go" data-reveal>
+        <span class="topic-icon">📇</span>
+        <p class="topic-name">Scripture Memory</p>
+        <p class="topic-sub">Flashcards · Verse Cards</p>
+      </a>
+      <a href="https://smartstarthub.etsy.com" target="_blank" class="topic-tile tt-gr" data-reveal data-delay="1">
+        <span class="topic-icon">🎄</span>
+        <p class="topic-name">Seasonal</p>
+        <p class="topic-sub">Christmas · Easter · Advent</p>
+      </a>
+      <a href="https://smartstarthub.etsy.com" target="_blank" class="topic-tile tt-gn" data-reveal data-delay="2">
+        <span class="topic-icon">🎁</span>
+        <p class="topic-name">Gifts</p>
+        <p class="topic-sub">Girls · Boys · Grandkids</p>
+      </a>
+      <a href="https://smartstarthub.etsy.com" target="_blank" class="topic-tile tt-wa" data-reveal data-delay="3">
+        <span class="topic-icon">👩</span>
+        <p class="topic-name">Women's Ministry</p>
+        <p class="topic-sub">Small Group · Devotionals</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ───────────────────────────────────────────────────────── -->
+<section id="testimonials">
+  <div class="container">
+    <div class="testi-head" data-reveal>
+      <div class="divider"></div>
+      <div class="eyebrow">What Families Say</div>
+      <h2>Loved by homeschool moms, <em>Sunday school teachers</em> & grandparents</h2>
+      <p class="section-lead">Real words from real families using SmartStartHub printables every single day.</p>
+    </div>
+    <div class="testi-grid">
+      <div class="tc" data-reveal>
+        <div class="tc-stars">★★★★★</div>
+        <p class="tc-body">"The SOAP Bible Study journal is absolutely beautiful. The layout makes it so easy to dig into the Word every morning. I've already gifted three to friends from my small group!"</p>
+        <div class="tc-foot">
+          <div class="tc-av" style="background:var(--green-lt)">👩</div>
+          <div><p class="tc-name">Sarah M.</p><p class="tc-role">Homeschool mom · Texas, USA</p></div>
+        </div>
+      </div>
+      <div class="tc dark" data-reveal data-delay="1">
+        <div class="tc-stars">★★★★★</div>
+        <p class="tc-body">"My granddaughter uses the prayer journal EVERY SINGLE morning. She shows me her answered prayers and it brings me to tears. Worth every peso. Thank you!"</p>
+        <div class="tc-foot">
+          <div class="tc-av" style="background:rgba(255,255,255,.1)">🙏</div>
+          <div><p class="tc-name">JoAnn R.</p><p class="tc-role">Grandmother · Verified Etsy Buyer</p></div>
+        </div>
+      </div>
+      <div class="tc" data-reveal data-delay="2">
+        <div class="tc-stars">★★★★★</div>
+        <p class="tc-body">"As a Sunday school teacher I've tried so many printable packs. SmartStartHub is in a different league. The kids actually WANT to do the activities!"</p>
+        <div class="tc-foot">
+          <div class="tc-av" style="background:var(--purple-lt)">✝️</div>
+          <div><p class="tc-name">Pastor Maria L.</p><p class="tc-role">Children's Ministry Leader</p></div>
+        </div>
+      </div>
+      <div class="tc" data-reveal>
+        <div class="tc-stars">★★★★★</div>
+        <p class="tc-body">"Downloaded, printed, and had it in my daughter's hands within 20 minutes of ordering. The design quality is stunning — looks like something from a professional publisher."</p>
+        <div class="tc-foot">
+          <div class="tc-av" style="background:var(--coral-lt)">👨</div>
+          <div><p class="tc-name">David T.</p><p class="tc-role">Dad & homeschool co-teacher</p></div>
+        </div>
+      </div>
+      <div class="tc" data-reveal data-delay="1">
+        <div class="tc-stars">★★★★★</div>
+        <p class="tc-body">"The flashcards are perfect for our morning routine. My 6-year-old has memorized 12 verses in just 3 weeks! The progress tracker keeps her SO motivated."</p>
+        <div class="tc-foot">
+          <div class="tc-av" style="background:var(--gold-lt)">📚</div>
+          <div><p class="tc-name">Grace A.</p><p class="tc-role">Classical homeschool mom</p></div>
+        </div>
+      </div>
+      <div class="tc" data-reveal data-delay="2">
+        <div class="tc-stars">★★★★★</div>
+        <p class="tc-body">"I live in Australia and was so relieved the A4 format was included! Everything printed perfectly. Genuinely some of the best-designed faith printables I have ever bought."</p>
+        <div class="tc-foot">
+          <div class="tc-av" style="background:var(--green-lt)">🌏</div>
+          <div><p class="tc-name">Miriam F.</p><p class="tc-role">Homeschool parent · Sydney, AU</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FREE RESOURCE ──────────────────────────────────────────────────────── -->
+<section id="freebie">
+  <div class="container">
+    <div class="free-inner">
+      <div data-reveal>
+        <p class="free-ey">Free Gift — No Catch, No Card Required</p>
+        <h2 class="free-title" style="color:#fff">Get a free Prayers & Answers Tracker for your child</h2>
+        <p class="free-desc">This one page has moved children — and their parents — to tears. Watch your child's faith grow as they see God answer their prayers over time, written in their own hand.</p>
+        <form class="free-form" onsubmit="handleSub(event)">
+          <input type="email" id="emailIn" placeholder="Your email address" required>
+          <button type="submit">Send My Free Gift →</button>
+        </form>
+        <p class="free-success" id="subSuccess">🎉 Check your inbox! Your free printable is on its way.</p>
+        <p class="free-small">No spam, ever. Just new products and occasional free resources.</p>
+      </div>
+      <div class="free-preview" data-reveal data-delay="2">
+        <p class="fp-title">📋 Prayers & Answers Tracker — Preview</p>
+        <div class="fp-row">
+          <div class="fp-left"><div class="fp-n">1</div><span class="fp-lbl">Grandma's surgery...</span></div>
+          <span class="fp-ans fp-yes">✓ God answered!</span>
+        </div>
+        <div class="fp-row">
+          <div class="fp-left"><div class="fp-n">2</div><span class="fp-lbl">A new friend at school</span></div>
+          <span class="fp-ans fp-yes">✓ Yes — Sofia!</span>
+        </div>
+        <div class="fp-row">
+          <div class="fp-left"><div class="fp-n">3</div><span class="fp-lbl">Help on my test</span></div>
+          <span class="fp-ans fp-yes">✓ Got a good grade!</span>
+        </div>
+        <div class="fp-row">
+          <div class="fp-left"><div class="fp-n">4</div><span class="fp-lbl">Our family to stop fighting</span></div>
+          <span class="fp-ans fp-wait">⏳ Still waiting...</span>
+        </div>
+        <div class="fp-row">
+          <div class="fp-left"><div class="fp-n">5</div><span class="fp-lbl">Baby sister to be healthy</span></div>
+          <span class="fp-ans fp-wait">⏳ Praying daily</span>
+        </div>
+        <p class="fp-verse">"Sometimes God says Yes, No, or Not Yet — but He always hears."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ──────────────────────────────────────────────────────────────── -->
+<section id="about">
+  <div class="container">
+    <div class="about-wrap">
+      <div class="about-visual" data-reveal>
+        <div class="av-orb"></div>
+        <div class="av-mark">"</div>
+        <p class="av-quote">Train up a child in the way he should go; even when he is old he will not depart from it.</p>
+        <p class="av-ref">— Proverbs 22:6</p>
+        <div class="av-stats">
+          <div class="av-stat"><div class="av-n">100%</div><div class="av-l">Faith-based content</div></div>
+          <div class="av-stat"><div class="av-n">∞</div><div class="av-l">Reprints allowed</div></div>
+          <div class="av-stat"><div class="av-n">2</div><div class="av-l">Paper sizes always</div></div>
+          <div class="av-stat"><div class="av-n">0</div><div class="av-l">Prep time needed</div></div>
+        </div>
+      </div>
+      <div class="about-text" data-reveal data-delay="2">
+        <div class="eyebrow">About SmartStartHub</div>
+        <h2>Made by a family <em>for families</em></h2>
+        <p>SmartStartHub was born from a simple frustration: beautiful faith printables that were either too complicated to use, too generic to matter, or just didn't fit how real families actually learn and pray together.</p>
+        <p>Every product in this shop is designed to be genuinely usable — with age-appropriate language, structured prompts that guide children through real reflection, and beautiful designs that make families want to come back every single day.</p>
+        <p>Based in Cebu, Philippines. Serving homeschool families, Sunday school teachers, and faith-filled parents across the globe.</p>
+        <div class="about-pills">
+          <div class="about-pill"><span>✝️</span><span>Scripture-centered</span></div>
+          <div class="about-pill"><span>👨‍👩‍👧</span><span>Family-tested</span></div>
+          <div class="about-pill"><span>🎨</span><span>Beautifully designed</span></div>
+          <div class="about-pill"><span>⚡</span><span>Instant download</span></div>
+          <div class="about-pill"><span>♾️</span><span>Unlimited reprints</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ────────────────────────────────────────────────────────────────── -->
+<section id="faq">
+  <div class="container">
+    <div class="faq-wrap">
+      <div data-reveal>
+        <div class="eyebrow">FAQ</div>
+        <h2>Common <em>questions</em></h2>
+        <p class="section-lead" style="font-size:15px;margin-bottom:24px">Everything you need to know before purchasing. Can't find your answer?</p>
+        <div class="faq-cta-box">
+          <p>Message us on Etsy — we reply within 24 hours and love hearing from families!</p>
+          <a href="https://smartstarthub.etsy.com" target="_blank">Contact on Etsy →</a>
+        </div>
+      </div>
+      <div class="faq-list" data-reveal data-delay="2">
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q">How do I receive my purchase after buying? <span class="faq-icon">⌄</span></div>
+          <div class="faq-a">All products are instant digital downloads. After completing your Etsy purchase, the PDF is available immediately in your Etsy account under "Purchases and Reviews." You'll also get a download link in your order confirmation email. No physical item is shipped — you own the file forever.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q">What paper sizes are included? <span class="faq-icon">⌄</span></div>
+          <div class="faq-a">Every download includes BOTH US Letter (8.5×11 inches) and A4 (210×297mm) in the same ZIP file — labeled clearly so you always know which is which. Whether you're in the Philippines, Australia, the UK, or the US, your files will print perfectly.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q">Can I print for my Sunday school class or co-op? <span class="faq-icon">⌄</span></div>
+          <div class="faq-a">Yes! All SmartStartHub products are licensed for personal and classroom use. Print multiple copies for your own children, Sunday school class, homeschool co-op, or children's ministry — as many times as you need. The only restriction is reselling the files or sharing the digital download itself with others.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q">What do I need to print these at home? <span class="faq-icon">⌄</span></div>
+          <div class="faq-a">Any standard inkjet or laser printer works perfectly. For most products, regular 20 lb copy paper is fine. For flashcards, 65 lb cardstock makes them more durable and easier for kids to handle. A standard home printer and basic paper is genuinely all you need.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q">Can I edit or customize the files? <span class="faq-icon">⌄</span></div>
+          <div class="faq-a">Products are delivered as print-ready PDFs — they are not editable files. They're designed to be print-and-use with no editing needed. If you need a specific customization (like a name on the certificate), send us a message on Etsy and we'll see what we can do!</div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q">What is your refund policy? <span class="faq-icon">⌄</span></div>
+          <div class="faq-a">Because these are instant digital downloads, we cannot accept returns once the file has been downloaded. However, if there's any issue with your file — corrupt download, missing pages, wrong file — message us immediately and we'll resolve it right away. Your satisfaction is our top priority.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-q">Do you offer bundles or discounts? <span class="faq-icon">⌄</span></div>
+          <div class="faq-a">Yes! Our Back-to-School Mega Bundle gives you 40% off the individual prices. We also run seasonal sales around Christmas, Easter, and Back-to-School. Follow our Etsy shop or join our email list (grab your free printable above!) to be the first to know about sales.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA STRIP ──────────────────────────────────────────────────────────── -->
+<div class="cta-strip">
+  <div class="container">
+    <div class="cta-inner" data-reveal>
+      <h2 style="color:#fff;margin-bottom:14px">Ready to start your family's <em>faith journey?</em></h2>
+      <p>Browse our full collection of faith-based printables on Etsy — instant download, print at home, use forever.</p>
+      <div class="cta-btns">
+        <a href="https://smartstarthub.etsy.com" target="_blank" class="btn btn-green" style="font-size:16px;padding:16px 36px">🛒 Shop on Etsy Now →</a>
+        <a href="#freebie" class="btn btn-outline" style="background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.2);color:#fff;font-size:16px;padding:16px 36px">🎁 Get Free Printable First</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── FOOTER ─────────────────────────────────────────────────────────────── -->
+<footer>
+  <div class="container">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <div class="nav-brand">
+          <div class="nav-orb">S</div>
+          <div class="nav-name" style="color:#fff">SmartStartHub <small style="color:rgba(255,255,255,.35)">Faith Printables</small></div>
+        </div>
+        <p>Faith-based printable resources for homeschool families, Sunday school teachers, and Christian parents — crafted with love in Cebu, Philippines.</p>
+        <div class="foot-social">
+          <a href="#" title="Pinterest" aria-label="Pinterest">📌</a>
+          <a href="#" title="Instagram" aria-label="Instagram">📷</a>
+          <a href="https://smartstarthub.etsy.com" target="_blank" title="Etsy" aria-label="Etsy Shop">🛒</a>
+          <a href="#" title="Facebook" aria-label="Facebook">👥</a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>Shop</h4>
+        <a href="https://smartstarthub.etsy.com" target="_blank">Bible Study Journals</a>
+        <a href="https://smartstarthub.etsy.com" target="_blank">Kids Prayer Journal</a>
+        <a href="https://smartstarthub.etsy.com" target="_blank">Scripture Flashcards</a>
+        <a href="https://smartstarthub.etsy.com" target="_blank">Fruit of the Spirit Unit</a>
+        <a href="https://smartstarthub.etsy.com" target="_blank">Seasonal Collection</a>
+        <a href="https://smartstarthub.etsy.com" target="_blank">View All Products →</a>
+      </div>
+      <div class="foot-col">
+        <h4>Explore</h4>
+        <a href="#topics">Shop by Topic</a>
+        <a href="#freebie">Free Printable</a>
+        <a href="#how">How It Works</a>
+        <a href="#testimonials">Family Reviews</a>
+        <a href="#faq">FAQ</a>
+        <a href="#about">About Us</a>
+      </div>
+      <div class="foot-col">
+        <h4>Support</h4>
+        <a href="https://smartstarthub.etsy.com" target="_blank">Message on Etsy</a>
+        <a href="#faq">Print Help Guide</a>
+        <a href="#faq">Licensing Policy</a>
+        <a href="#faq">Refund Policy</a>
+        <a href="#freebie">Join Email List</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>© 2026 SmartStartHub · All rights reserved · Made with ♥ in Cebu, Philippines</p>
+      <div class="foot-badges">
+        <span class="fbadge">⚡ Instant Download</span>
+        <span class="fbadge">✝️ Faith-Based</span>
+        <span class="fbadge">🖨️ Print at Home</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── Custom cursor ──────────────────────────────────────────────────────────
+const cur = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+if(cur && ring){
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.transform=`translate(${mx-5}px,${my-5}px)`;});
+  function animRing(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.transform=`translate(${rx-18}px,${ry-18}px)`;requestAnimationFrame(animRing);}
+  animRing();
+  document.querySelectorAll('a,button,[onclick]').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{cur.style.transform+=' scale(2)';ring.style.transform+=' scale(1.5)';ring.style.borderColor='rgba(29,158,117,.6)'});
+    el.addEventListener('mouseleave',()=>{ring.style.borderColor='rgba(29,158,117,.35)'});
+  });
+}
+
+// ── Nav solid on scroll ────────────────────────────────────────────────────
+window.addEventListener('scroll',()=>{
+  document.getElementById('mainNav').classList.toggle('solid',window.scrollY>30);
+});
+
+// ── Mobile drawer ──────────────────────────────────────────────────────────
+function toggleDrawer(){document.getElementById('drawer').classList.toggle('open')}
+function closeDrawer(){document.getElementById('drawer').classList.remove('open')}
+
+// ── Scroll reveal ──────────────────────────────────────────────────────────
+const ro = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('revealed')});
+},{threshold:0.12});
+document.querySelectorAll('[data-reveal]').forEach(el=>ro.observe(el));
+
+// ── FAQ accordion ──────────────────────────────────────────────────────────
+function toggleFaq(el){
+  const open=el.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+  if(!open)el.classList.add('open');
+}
+
+// ── Email subscribe ────────────────────────────────────────────────────────
+function handleSub(e){
+  e.preventDefault();
+  const v=document.getElementById('emailIn').value;
+  if(v){
+    document.querySelector('.free-form').style.opacity='.4';
+    document.querySelector('.free-form').style.pointerEvents='none';
+    document.getElementById('subSuccess').style.display='block';
+    // In production: send to your email service (Mailchimp, Flodesk, etc.)
+    console.log('New subscriber:',v);
+  }
+}
+</script>
+</body>
+</html>
+HTMLEOF
+echo "✅ Website created — $(wc -c < /mnt/user-data/outputs/SmartStartHub_Website.html) bytes"
+Output
+
+✅ Website created — 75744 bytes
